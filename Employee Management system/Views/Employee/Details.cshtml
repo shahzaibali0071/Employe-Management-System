@@ -1,0 +1,66 @@
+﻿@model List<Employee_Management_system.DB.employee>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Employee Details</h2>
+&nbsp;
+@using (Html.BeginForm("Details", "Employee", FormMethod.Post))
+{
+                <table>
+                    <tr>
+                        <td>
+                            <span>
+                                SEARCH :
+                            </span>
+                        </td>
+
+                        <td>
+                            @Html.TextBox("Searchvalue", null, new { Class = "form-control", placeholder = "ENTER EMPLOYEE NAME" })
+                        </td>
+                        &nbsp;&nbsp;
+                        <td>
+                            <input type="submit" value="Details" class="btn btn-success" />
+                        </td>
+                        
+                    </tr>
+                </table>
+            }
+<table class="table">
+    <tr>
+        <th>ID  </th>
+        <th>First Name </th>
+        
+        <th>Last Name  </th>
+     
+        <th>Email      </th>
+
+        <th>Phone      </th>
+        
+        <th>Position    </th>
+        
+        <th>Salary      </th>
+        <th>Action      </th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.Id</th>
+            <th>@item.Firstname</th>
+            <th>@item.LastName</th>
+            <th>@item.Email</th>
+            <th>@item.phone</th>
+            <th>@item.Position</th>
+            <th>@item.Salary</th>
+            
+
+           <td><a href="@Url.Action("Index", new {item.Id,item.Firstname,item.LastName,item.Email,item.phone,item.Position,item.Salary})" class="btn btn-success">EDIT </a></td>
+           <td><a href="@Url.Action("Delete",new { item.Id })" class="btn btn-danger">DELETE </a></td> 
+        </tr>
+
+    }
+
+</table>

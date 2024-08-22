@@ -1,0 +1,71 @@
+﻿@model Employee_Management_system.DB.employee
+@{
+    ViewBag.Title = "Index";
+}
+<h2>ADD EMPLOYEE</h2>
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+@using (Html.BeginForm("AddEmployee", "Employee", FormMethod.Post))
+{
+    <div class="form-horiontal">
+        <div class="form-group">
+            @Html.HiddenFor(c => c.Id)
+            <label>First NAME</label>
+
+            @Html.ValidationMessageFor(c => c.Firstname, "", new { @class = "error" })
+            <div class="col-md-10">
+                &nbsp;&nbsp;
+                @Html.TextBoxFor(c => c.Firstname, new { @class = "form-conrol" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label>LAST NAME</label>
+            @Html.ValidationMessageFor(c => c.LastName, "", new { @class = "error" })
+            <div class="col-md-10">
+                &nbsp;&nbsp;
+                @Html.TextBoxFor(c => c.LastName, new { @class = "form-conrol" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            @Html.ValidationMessageFor(c => c.Email, "", new { @class = "error" })
+            <div class="col-md-10">
+                &nbsp;&nbsp;
+                @Html.TextBoxFor(c => c.Email, new { @class = "form-conrol" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label>phone</label>
+            @Html.ValidationMessageFor(c => c.phone, "", new { @class = "error" })
+            <div class="col-md-10">
+                &nbsp;&nbsp;
+                @Html.TextBoxFor(c => c.phone, new { @class = "form-conrol" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label>POSITION</label>
+            @Html.ValidationMessageFor(c => c.Position, "", new { @class = "error" })
+            <div class="col-md-10">
+                &nbsp;&nbsp;
+                @Html.TextBoxFor(c => c.Position, new { @class = "form-conrol" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label>SALARY</label>
+            @Html.ValidationMessageFor(c => c.Salary, "", new { @class = "error" })
+            <div class="col-md-10">
+                &nbsp;&nbsp;
+                @Html.TextBoxFor(c => c.Salary, new { @class = "form-conrol", @rows = "10" })
+            </div>
+        </div>
+        &nbsp;&nbsp;
+        <div class="form-group">
+            &nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+}
